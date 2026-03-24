@@ -8,7 +8,7 @@ export interface APIError {
 	message: string
 }
 
-type UserRole = 'Admin' | 'Editor' | 'Viewer'
+export type UserRole = 'Admin' | 'Editor' | 'Viewer'
 
 export interface User {
 	id: string | number

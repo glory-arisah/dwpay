@@ -13,5 +13,10 @@ export const router = createRouter({
 			path: '/users',
 			component: () => import('@/views/users/index.vue'),
 		},
+		{
+			name: 'create-user',
+			path: '/create',
+			component: () => import('@/views/create-user/index.vue'),
+		},
 	],
 })

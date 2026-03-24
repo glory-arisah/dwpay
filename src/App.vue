@@ -1,7 +1,4 @@
 <script setup>
-	import { ref } from 'vue'
-
-	const expandMobileMenu = ref(false)
 	const currentYear = new Date().getFullYear()
 </script>
 
@@ -14,11 +11,6 @@
 				</li>
 			</ul>
 		</nav>
-
-		<div
-			:class="['mobile-menu', expandMobileMenu ? 'open' : '']"
-			id="mobileMenu"
-		></div>
 
 		<main class="content--wrapper">
 			<div class="main-content">
@@ -71,11 +63,6 @@
 	.fixed-nav-bar li a {
 		text-decoration: none;
 		padding: 0px 20px;
-		display: none;
-
-		@media (min-width: 576px) {
-			display: block;
-		}
 	}
 
 	/* MAIN CONTENT STYLES */

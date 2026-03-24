@@ -1,5 +1,7 @@
 :root {
 	font-family: 'Open Sans', Avenir, Helvetica, Arial, sans-serif;
+	--color-primary: #174eba;
+	--color-danger: #e21616;
 }
 
 *,

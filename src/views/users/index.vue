@@ -1,9 +1,29 @@
 <script setup lang="ts">
 	import { useUserStore } from '@/store'
 	import { storeToRefs } from 'pinia'
+	import { computed, ref } from 'vue'
+	import { useRouter } from 'vue-router'
 
+	const search = ref('')
+
+	const filteredUserList = computed(() => {
+		const query = search.value.toLowerCase().trim()
+
+		return users.value.reduce((acc, user) => {
+			const isNameMatched = user.name.trim().toLowerCase().includes(query)
+			if (isNameMatched) acc.push(user)
+
+			return acc
+		}, [])
+	})
+
+	const router = useRouter()
 	const userStore = useUserStore()
 	const { users, isFetchingUsers, fetchUserError } = storeToRefs(userStore)
+
+	function routeToCreateUser() {
+		router.push({ name: 'create-user' })
+	}
 
 	// SYNC PINIA USERS STATE WITH LOCAL STORAGE
 	userStore.loadFromStorage()
@@ -16,10 +36,20 @@
 		<div v-if="fetchUserError">{{ fetchUserError }}</div>
 
 		<div>
+			<div class="search">
+				<input
+					:disabled="isFetchingUsers"
+					class="search--input"
+					placeholder="Search..."
+					v-model="search"
+				/>
+			</div>
+
 			<div class="create-user-cta">
 				<button
 					type="button"
 					class="create-user--btn"
+					@click="routeToCreateUser"
 				>
 					Create user
 				</button>
@@ -46,7 +76,7 @@
 
 				<tbody>
 					<tr
-						v-for="user in users"
+						v-for="user in filteredUserList"
 						:key="user.id"
 					>
 						<td>{{ user.name }}</td>
