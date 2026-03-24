@@ -25,6 +25,10 @@
 		router.push({ name: 'create-user' })
 	}
 
+	const adminCount = computed(
+		() => users.value.filter((user) => user.role === 'Admin').length,
+	)
+
 	// SYNC PINIA USERS STATE WITH LOCAL STORAGE
 	userStore.loadFromStorage()
 	// RUN GET /users
@@ -43,6 +47,10 @@
 					placeholder="Search..."
 					v-model="search"
 				/>
+			</div>
+
+			<div>
+				<span>Total Admins:</span> <strong>{{ adminCount }}</strong>
 			</div>
 
 			<div class="create-user-cta">
