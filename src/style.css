@@ -1,3 +1,11 @@
 :root {
-	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans', Avenir, Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after,
+body {
+	margin: 0px;
+	padding: 0px;
 }
