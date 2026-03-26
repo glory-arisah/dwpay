@@ -14,9 +14,9 @@
 
 		const query = search.value.toLowerCase().trim()
 
-		return users.value.reduce((acc, user) => {
+		return users.value.reduce((acc, user, index) => {
 			const isNameMatched = user.name.trim().toLowerCase().includes(query)
-			if (isNameMatched) acc.push(user)
+			if (isNameMatched) acc.push({ ...user, sn: index + 1 })
 
 			return acc
 		}, [])
@@ -153,11 +153,11 @@
 
 				<tbody>
 					<tr
-						v-for="(user, userIndex) in filteredUserList"
+						v-for="user in filteredUserList"
 						:key="user.id"
 					>
 						<td data-label="#">
-							{{ (userIndex as number) + 1 }}
+							{{ user.sn }}
 						</td>
 						<td data-label="Name">{{ user.name }}</td>
 						<td data-label="Email">{{ user.email }}</td>

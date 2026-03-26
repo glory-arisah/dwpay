@@ -58,10 +58,7 @@
 						@input="validateForm"
 					/>
 
-					<p
-						v-if="formErrors.email"
-						class="form-error"
-					>
+					<p class="form-error">
 						{{ formErrors.email }}
 					</p>
 				</label>
@@ -97,10 +94,7 @@
 						/>
 					</div>
 
-					<p
-						v-if="formErrors.role"
-						class="form-error"
-					>
+					<p class="form-error">
 						{{ formErrors.role }}
 					</p>
 				</label>
