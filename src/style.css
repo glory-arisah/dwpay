@@ -1,7 +1,13 @@
 :root {
 	font-family: 'Open Sans', Avenir, Helvetica, Arial, sans-serif;
-	--color-primary: #174eba;
+	--color-primary: #4f46e5;
 	--color-danger: #e21616;
+	--color-white: #ffffff;
+	--color-background: #ebecee;
+	--color-text: #000000;
+	--color-subtext: #6b7280;
+	--color-border: #e5e7eb;
+	--color-table-header-text: #374151;
 }
 
 *,
@@ -10,4 +16,5 @@
 body {
 	margin: 0px;
 	padding: 0px;
+	box-sizing: border-box;
 }

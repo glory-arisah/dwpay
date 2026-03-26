@@ -17,28 +17,7 @@ export interface User {
 	role: UserRole
 }
 
-let users: User[] = []
-
-function initializeSampleUsers() {
-	const localStorageUsers = JSON.parse(localStorage.getItem(STORAGE_KEY))
-
-	if (!localStorageUsers) {
-		const sampleUsers = [
-			{
-				id: Date.now(),
-				name: 'John Doe',
-				email: 'john@example.com',
-				role: 'Admin',
-			},
-		]
-
-		localStorage.setItem(STORAGE_KEY, JSON.stringify(sampleUsers))
-	}
-
-	users = JSON.parse(localStorage.getItem(STORAGE_KEY))
-}
-
-initializeSampleUsers()
+let users: User[] = JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []
 
 export async function getUsers(
 	mockAPIFailure: boolean = false,
@@ -64,7 +43,6 @@ export async function createUser(
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
 			const user = { id: Date.now(), ...newUser }
-			users.push(user)
 
 			if (!mockAPIFailure) {
 				resolve({ data: user })

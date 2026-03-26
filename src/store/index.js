@@ -58,4 +58,7 @@ export const useUserStore = defineStore('users', {
 			}
 		},
 	},
+	getters: {
+		hasUsers: (state) => Array.isArray(state.users) && state.users.length > 0,
+	},
 })
