@@ -1,12 +1,24 @@
 <template>
 	<div class="create-user--wrapper">
-		<div class="go-back-cta">
-			<router-link :to="{ name: 'home' }"
-				>{{ '<' }} &nbsp; Back to users table
-			</router-link>
+		<div class="create-user-header">
+			<div style="display: flex; align-items: center; gap: 8px">
+				<router-link
+					:to="{ name: 'home' }"
+					class="back--link"
+					style="display: flex"
+				>
+					<img
+						:src="backSvg"
+						alt="go back to users register"
+					/>
+				</router-link>
+
+				<span class="header-text"> Create User </span>
+			</div>
 		</div>
 
 		<form
+			id="create-user"
 			class="create-user--form"
 			@submit.prevent="submitNewUser"
 		>
@@ -93,30 +105,32 @@
 					</p>
 				</label>
 			</div>
-
-			<div class="form-action--btns">
-				<button
-					type="button"
-					class="cancel--btn"
-					:disabled="isCreatingUser"
-					@click="routeToUsersPage"
-				>
-					Cancel
-				</button>
-
-				<button
-					class="submit--btn"
-					:disabled="isCreatingUser"
-				>
-					Submit
-				</button>
-			</div>
 		</form>
+
+		<div class="form-actions">
+			<button
+				type="button"
+				class="cancel--btn"
+				:disabled="isCreatingUser"
+				@click="routeToUsersPage"
+			>
+				Cancel
+			</button>
+
+			<button
+				form="create-user"
+				class="submit--btn"
+				:disabled="isCreatingUser"
+			>
+				Submit
+			</button>
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 	import chevronDownSvg from '@/assets/chevron-down.svg'
+	import backSvg from '@/assets/back.svg'
 	import { UserRole } from '@/services/userService'
 	import { useUserStore } from '@/store'
 	import { storeToRefs } from 'pinia'

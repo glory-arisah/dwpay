@@ -13,6 +13,7 @@
 		background-color: var(--color-background);
 		height: 100vh;
 		display: flex;
+		align-items: center;
 		flex-direction: column;
 		overflow: hidden;
 		padding: 0px;
@@ -23,12 +24,14 @@
 	}
 
 	.card {
-		flex: 1;
-		overflow-y: auto;
-		background-color: white;
-		min-height: 0;
 		display: flex;
 		flex-direction: column;
+		width: 100%;
+		max-width: 772px;
+		flex: 1;
+		background-color: white;
+		overflow-y: auto;
+		min-height: 0;
 		border-radius: 0px;
 		box-shadow: none;
 		padding: 32px 24px 24px;

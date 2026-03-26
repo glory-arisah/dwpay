@@ -42,13 +42,21 @@
 		}
 
 		&:hover {
-			background: #4338ca;
+			background: var(--color-primary-dark);
 			transform: translateY(-1px);
 		}
 
 		&:active {
 			transform: scale(0.96);
-			background: #4338ca;
+			background: var(--color-primary-dark);
+		}
+
+		&:focus-visible {
+			outline: none;
+			box-shadow:
+				0 0 0 2px #ffffff,
+				0 0 0 4px rgba(79, 70, 229, 0.5);
+			transition: box-shadow 0.2s ease-in-out;
 		}
 	}
 
@@ -83,6 +91,8 @@
 
 		&:focus {
 			outline: none;
+			border-color: var(--color-primary);
+			box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
 		}
 
 		&:focus-visible {
@@ -208,7 +218,7 @@
 
 		&.editor {
 			background: #eef2ff;
-			color: #4338ca;
+			color: var(--color-primary-dark);
 		}
 
 		&.viewer {
